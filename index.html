@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perth Family Itinerary — 30 Aug to 6 Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2EEE3;
+    --bg-card:#FCFAF3;
+    --ink:#16302C;
+    --ink-soft:#52645F;
+    --teal:#1D6F71;
+    --teal-dark:#0F3F40;
+    --teal-tint:#E4EFEE;
+    --amber:#BE7635;
+    --amber-dark:#8C5423;
+    --amber-tint:#F3E7D7;
+    --line:#D2C6A8;
+    --coral:#C1512F;
+    --white:#fff;
+    --radius:14px;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal-dark);}
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:600; margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--teal-dark) 0%,var(--teal) 100%);
+    color:var(--white);
+    padding:56px 20px 84px;
+  }
+  .hero-inner{max-width:var(--maxw); margin:0 auto;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.72rem;
+    opacity:.8;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(1.7rem,4vw,2.5rem);
+    font-style:italic;
+    font-weight:500;
+    max-width:16ch;
+    line-height:1.15;
+    margin-bottom:22px;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .hero-chip{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    padding:7px 13px;
+    border-radius:100px;
+    font-size:.82rem;
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* ---------- JETTY NAV ---------- */
+  .jetty-wrap{
+    max-width:var(--maxw);
+    margin:-40px auto 0;
+    padding:0 20px;
+    position:relative;
+    z-index:5;
+  }
+  .jetty-nav{
+    background:var(--bg-card);
+    border-radius:var(--radius);
+    box-shadow:0 10px 30px -12px rgba(15,63,64,.35);
+    padding:16px 14px 10px;
+    display:flex;
+    align-items:flex-end;
+    gap:2px;
+    overflow-x:auto;
+  }
+  .plank{
+    flex:1 1 0;
+    min-width:36px;
+    text-align:center;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px 2px 10px;
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--ink-soft);
+    position:relative;
+  }
+  .plank .num{
+    display:block;
+    font-size:.95rem;
+    font-weight:500;
+  }
+  .plank .bar{
+    display:block;
+    height:5px;
+    margin-top:8px;
+    border-radius:3px;
+    background:var(--line);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .plank.leg-scarborough .bar{background:var(--teal);}
+  .plank.leg-freo .bar{background:var(--amber);}
+  .plank.active .bar{transform:scaleY(1.8);}
+  .plank.active{color:var(--ink);}
+  .plank.move-before::after{
+    content:"";
+    position:absolute;
+    right:-3px; top:6px; bottom:14px;
+    width:2px;
+    background:repeating-linear-gradient(180deg,var(--ink-soft) 0 4px, transparent 4px 8px);
+    opacity:.5;
+  }
+  .plank:focus-visible{outline:2px solid var(--teal-dark); outline-offset:2px; border-radius:6px;}
+
+  /* ---------- LAYOUT ---------- */
+  main{max-width:var(--maxw); margin:0 auto; padding:36px 20px 10px;}
+
+  /* essentials */
+  .essentials{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:44px;
+  }
+  .ess-card{
+    background:var(--bg-card);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    border:1px solid var(--line);
+  }
+  .ess-card .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--coral);
+    display:block;
+    margin-bottom:6px;
+  }
+  .ess-card p{margin:0; font-size:.92rem; color:var(--ink-soft);}
+
+  .adjust-note{
+    background:var(--teal-tint);
+    border:1px solid var(--teal);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-bottom:44px;
+    font-size:.94rem;
+  }
+  .adjust-note strong{color:var(--teal-dark);}
+
+  /* day sections */
+  .day{
+    scroll-margin-top:110px;
+    margin-bottom:46px;
+    border-radius:var(--radius);
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .day-head{
+    padding:22px 24px 18px;
+    border-bottom:1px dashed var(--line);
+    position:relative;
+  }
+  .day-head.leg-scarborough{border-top:5px solid var(--teal);}
+  .day-head.leg-freo{border-top:5px solid var(--amber);}
+  .day-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.76rem;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:10px;
+  }
+  .badge{
+    padding:3px 10px;
+    border-radius:100px;
+    font-size:.7rem;
+    font-weight:500;
+  }
+  .badge.leg-scarborough{background:var(--teal-tint); color:var(--teal-dark);}
+  .badge.leg-freo{background:var(--amber-tint); color:var(--amber-dark);}
+  .badge.moveflag{background:var(--coral); color:#fff;}
+  .day-head h2{font-size:1.35rem; font-style:italic; font-weight:500;}
+  .day-sub{color:var(--ink-soft); font-size:.9rem; margin-top:6px;}
+
+  .timeline{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:0;
+    padding:18px 24px 6px;
+  }
+  .tl-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:10px 10px 10px 0;
+    border-left:2px solid var(--line);
+    position:relative;
+  }
+  .tl-label::before{
+    content:"";
+    position:absolute;
+    left:-5px; top:14px;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--teal);
+  }
+  .day-head.leg-freo ~ .timeline .tl-label::before{background:var(--amber);}
+  .tl-content{
+    padding:10px 0 10px 16px;
+    border-left:2px solid var(--line);
+    font-size:.94rem;
+  }
+  .tl-content:last-of-type, .tl-label:last-of-type{border-left:2px solid transparent;}
+
+  .day-foot{
+    padding:14px 24px 22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:flex-start;
+  }
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.76rem;
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:6px 11px;
+    border-radius:8px;
+    color:var(--ink-soft);
+  }
+  .kidnote{
+    margin:0 24px 22px;
+    background:var(--amber-tint);
+    border-left:3px solid var(--amber);
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:.88rem;
+    color:#5c3d1a;
+  }
+  .kidnote.tealnote{background:var(--teal-tint); border-left-color:var(--teal); color:#0f3f40;}
+  .kidnote strong{display:block; font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; font-family:'IBM Plex Mono',monospace;}
+
+  /* footer */
+  .planning-note{
+    font-size:.85rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    padding:24px 0;
+    margin-top:20px;
+  }
+  footer.sources{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:10px 20px 60px;
+  }
+  footer.sources h3{font-size:1rem; margin-bottom:10px; color:var(--ink-soft); font-style:italic;}
+  footer.sources ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    gap:6px;
+    font-size:.82rem;
+  }
+  footer.sources a{color:var(--ink-soft); text-decoration:none; border-bottom:1px dotted var(--line);}
+  footer.sources a:hover{color:var(--teal-dark); border-color:var(--teal-dark);}
+
+  @media(max-width:600px){
+    .essentials{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:88px 1fr;}
+    .day-head, .timeline, .day-foot{padding-left:16px; padding-right:16px;}
+    .kidnote{margin-left:16px; margin-right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Perth · Kid-friendly · 8 days / 7 nights</p>
+    <h1>Scarborough to Fremantle — one move, seven nights, a lot of quokkas</h1>
+    <div class="hero-meta">
+      <span class="hero-chip">30 Aug – 6 Sep 2026</span>
+      <span class="hero-chip">Arrive 4:15pm · Depart 5:20pm</span>
+      <span class="hero-chip">Scarborough 30/8 → 2/9</span>
+      <span class="hero-chip">Fremantle / Coogee 2/9 → 6/9</span>
+    </div>
+  </div>
+</header>
+
+<div class="jetty-wrap">
+  <nav class="jetty-nav" aria-label="Jump to day">
+    <button class="plank leg-scarborough" data-target="day-1"><span class="num">1</span><span class="bar"></span></button>
+    <button class="plank leg-scarborough" data-target="day-2"><span class="num">2</span><span class="bar"></span></button>
+    <button class="plank leg-scarborough" data-target="day-3"><span class="num">3</span><span class="bar"></span></button>
+    <button class="plank leg-scarborough move-before" data-target="day-4"><span class="num">4</span><span class="bar"></span></button>
+    <button class="plank leg-freo" data-target="day-5"><span class="num">5</span><span class="bar"></span></button>
+    <button class="plank leg-freo" data-target="day-6"><span class="num">6</span><span class="bar"></span></button>
+    <button class="plank leg-freo" data-target="day-7"><span class="num">7</span><span class="bar"></span></button>
+    <button class="plank leg-freo" data-target="day-8"><span class="num">8</span><span class="bar"></span></button>
+  </nav>
+</div>
+
+<main>
+
+  <section class="essentials" aria-label="Trip essentials">
+    <div class="ess-card">
+      <span class="tag">Penguin Island</span>
+      <p>Landing is closed for the winter penguin nesting season — the day after WA Day (early June) through 14 September, reopening 15 September. Your Shoalwater day (Day 7, 5 Sep) falls inside that closure, so the wildlife cruise (which still runs daily) or the foreshore is the plan, not the island itself.</p>
+    </div>
+    <div class="ess-card">
+      <span class="tag">Strawberry picking</span>
+      <p>Farms near Gnangara/Wanneroo vary week to week — check the farm's Facebook page the night before Day 2, and have the chocolate co. or a playground as backup.</p>
+    </div>
+    <div class="ess-card">
+      <span class="tag">Busselton Jetty</span>
+      <p>3 Sep falls in the reduced May–Sept hours: Interpretive Centre 9:30am–4:15pm, Jetty Train 10am–4pm, Underwater Observatory tours 10am–3pm — all weather-dependent. Only pre-book if you can commit to the timing; otherwise foreshore + a walk out on the jetty is the low-risk plan.</p>
+    </div>
+    <div class="ess-card">
+      <span class="tag">Rottnest ferry</span>
+      <p>Book the Fremantle–Rottnest ferry ahead of time (about 25–30 min each way) and pack windbreakers — late winter/early spring can be breezy on the island.</p>
+    </div>
+  </section>
+
+  <div class="adjust-note">
+    <strong>One adjustment from the original spreadsheet:</strong> the plan document had you moving from Scarborough to Coogee on Day 5, the same day as the Busselton trip. Since you're actually checking out of Scarborough on 2 Sep, I split that into two lighter days — Day 4 is just the move, and Day 5 is a Busselton day trip out of Fremantle/Coogee with no accommodation change. It also shaves roughly 15–20 minutes off the Busselton drive each way, since Coogee sits south of the city, closer to the South West.
+  </div>
+
+  <section class="days">
+
+    <!-- DAY 1 -->
+    <article class="day" id="day-1">
+      <div class="day-head leg-scarborough">
+        <div class="day-eyebrow">
+          <span class="mono">Sun 30 Aug</span>
+          <span class="badge leg-scarborough">Scarborough</span>
+        </div>
+        <h2>Day 1 — Arrival &amp; settle in</h2>
+        <p class="day-sub">Keep expectations low. Groceries, milk/snacks, diapers and an early bedtime win the day.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Arrival</div>
+        <div class="tl-content">Land 4:15pm, collect the rental car from Europcar in the terminal, drive to Scarborough.</div>
+        <div class="tl-label">Lunch / nap</div>
+        <div class="tl-content">Already handled on the plane.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Check in, dinner, and a grocery run for the essentials.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Airport → Scarborough: ~30–40 min</span>
+      </div>
+    </article>
+
+    <!-- DAY 2 -->
+    <article class="day" id="day-2">
+      <div class="day-head leg-scarborough">
+        <div class="day-eyebrow">
+          <span class="mono">Mon 31 Aug</span>
+          <span class="badge leg-scarborough">Scarborough</span>
+        </div>
+        <h2>Day 2 — Kings Park + Perth CBD</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Morning</div>
+        <div class="tl-content">Kings Park — the Lotterywest Family Area / playground and the easy viewpoints.</div>
+        <div class="tl-label">Lunch / nap</div>
+        <div class="tl-content">Lunch in the CBD.</div>
+        <div class="tl-label">Afternoon</div>
+        <div class="tl-content">London Court, Hay Street / Murray Street Mall, or a short shopping stop.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Dinner near Elizabeth Quay.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Scarborough → Kings Park: ~20–30 min</span>
+        <span class="chip">Kings Park → CBD: ~10–15 min</span>
+        <span class="chip">CBD → Scarborough: ~20–35 min</span>
+      </div>
+      <div class="kidnote tealnote"><strong>Why this shape</strong>Covers the CBD + Kings Park box without making the day too packed for a toddler.</div>
+    </article>
+
+    <!-- DAY 3 -->
+    <article class="day" id="day-3">
+      <div class="day-head leg-scarborough">
+        <div class="day-eyebrow">
+          <span class="mono">Tue 1 Sep</span>
+          <span class="badge leg-scarborough">Scarborough</span>
+        </div>
+        <h2>Day 3 — Caversham Wildlife Park + strawberry picking</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Morning</div>
+        <div class="tl-content">Drive to Caversham Wildlife Park, aiming to enter by 9:30–10:00am so you're not rushed before last entry.</div>
+        <div class="tl-label">Lunch / nap</div>
+        <div class="tl-content">Lunch in the Swan Valley / Whiteman Park area, then a car nap afterward.</div>
+        <div class="tl-label">Afternoon</div>
+        <div class="tl-content">Short strawberry-picking stop in Gnangara/Wanneroo if farms are open; otherwise Swan Valley Chocolate Company or a playground.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Back to Scarborough for dinner and laundry.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Scarborough → Caversham: ~35–45 min</span>
+        <span class="chip">Caversham → farms: ~25–40 min</span>
+        <span class="chip">Farms → Scarborough: ~35–50 min</span>
+      </div>
+      <div class="kidnote"><strong>Kid note</strong>Caversham is open 9am–4:30pm daily (last entry 3:30pm) and recommends 3–4 hours — strawberry season runs roughly Aug–Oct, but check the specific farm first.</div>
+    </article>
+
+    <!-- DAY 4 -->
+    <article class="day" id="day-4">
+      <div class="day-head leg-scarborough">
+        <div class="day-eyebrow">
+          <span class="mono">Wed 2 Sep</span>
+          <span class="badge leg-scarborough">Scarborough</span>
+          <span class="badge moveflag">Moving day</span>
+        </div>
+        <h2>Day 4 — Checkout &amp; relocate to Fremantle / Coogee</h2>
+        <p class="day-sub">Adjusted from the spreadsheet's original "free suburban day" — this is now the move, kept deliberately light.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Morning</div>
+        <div class="tl-content">Slow morning at Scarborough Beach / playground / coffee before checkout. Optional Trigg Beach drive-by.</div>
+        <div class="tl-label">Midday</div>
+        <div class="tl-content">Pack up and drive south to the Fremantle / Coogee base.</div>
+        <div class="tl-label">Afternoon</div>
+        <div class="tl-content">Check in, unpack, and keep it unstructured — a walk around Coogee Beach or South Fremantle is plenty.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Easy dinner locally. This is also your laundry/grocery buffer, just relocated a day earlier than the spreadsheet had it.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Scarborough → Coogee: ~30–40 min</span>
+      </div>
+    </article>
+
+    <!-- DAY 5 -->
+    <article class="day" id="day-5">
+      <div class="day-head leg-freo">
+        <div class="day-eyebrow">
+          <span class="mono">Thu 3 Sep</span>
+          <span class="badge leg-freo">Fremantle / Coogee</span>
+        </div>
+        <h2>Day 5 — Busselton Jetty day trip</h2>
+        <p class="day-sub">A full day out, but no accommodation change — this is the easier version of the spreadsheet's "hardest day."</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Morning</div>
+        <div class="tl-content">Relaxed start, then drive straight down to Busselton.</div>
+        <div class="tl-label">Lunch / nap</div>
+        <div class="tl-content">Lunch in Busselton; toddler naps in the car on the way down.</div>
+        <div class="tl-label">Afternoon</div>
+        <div class="tl-content">Busselton Jetty foreshore, playground, and a short jetty walk — or the pre-booked Jetty Train / Underwater Observatory only if the timing works.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Early dinner in Busselton, then a bedtime drive back to Coogee/Fremantle.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Fremantle/Coogee → Busselton: ~2 hr 30–2 hr 45</span>
+        <span class="chip">Return: ~2 hr 30–2 hr 45</span>
+      </div>
+      <div class="kidnote"><strong>Kid note</strong>Still the biggest driving day of the trip — but no longer doubled up with a house move. Treat any train/observatory booking as optional rather than fixed.</div>
+    </article>
+
+    <!-- DAY 6 -->
+    <article class="day" id="day-6">
+      <div class="day-head leg-freo">
+        <div class="day-eyebrow">
+          <span class="mono">Fri 4 Sep</span>
+          <span class="badge leg-freo">Fremantle / Coogee</span>
+        </div>
+        <h2>Day 6 — Rottnest Island day trip</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Morning</div>
+        <div class="tl-content">Drive to the Fremantle ferry terminal, take the morning ferry over. Stroller-friendly settlement area, quokka spotting, a bakery/cafe stop.</div>
+        <div class="tl-label">Lunch / nap</div>
+        <div class="tl-content">Lunch on Rottnest; nap in the stroller or a quiet beach/cafe.</div>
+        <div class="tl-label">Afternoon</div>
+        <div class="tl-content">Return on the mid/late ferry. Keep it simple: Thomson Bay, The Basin if the weather allows, settlement area and the bus if needed.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Easy dinner in Fremantle or back at Coogee.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Coogee → Fremantle terminal: ~15–25 min</span>
+        <span class="chip">Ferry each way: ~25–30 min</span>
+      </div>
+      <div class="kidnote"><strong>Kid note</strong>Book the ferry ahead, and bring windbreakers — late winter/early spring can be breezy out there.</div>
+    </article>
+
+    <!-- DAY 7 -->
+    <article class="day" id="day-7">
+      <div class="day-head leg-freo">
+        <div class="day-eyebrow">
+          <span class="mono">Sat 5 Sep</span>
+          <span class="badge leg-freo">Fremantle / Coogee</span>
+        </div>
+        <h2>Day 7 — Shoalwater / Rockingham + easy beach day</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Morning</div>
+        <div class="tl-content">Drive to Shoalwater/Rockingham — wildlife cruise if it's operating, otherwise the Rockingham foreshore, a playground, and the Cape Peron lookout.</div>
+        <div class="tl-label">Lunch / nap</div>
+        <div class="tl-content">Lunch in Rockingham; nap on the drive back to Coogee.</div>
+        <div class="tl-label">Afternoon</div>
+        <div class="tl-content">Free-and-easy Coogee Beach, Fremantle Markets if open, or a supermarket/packing run.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Final relaxed dinner.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Coogee → Shoalwater/Rockingham: ~25–35 min</span>
+      </div>
+      <div class="kidnote"><strong>Kid note</strong>Penguin Island landing is closed until 15 Sep for the nesting season, so 5 Sep still falls inside it — the wildlife cruise (runs daily through winter) or the foreshore is the safer plan either way.</div>
+    </article>
+
+    <!-- DAY 8 -->
+    <article class="day" id="day-8">
+      <div class="day-head leg-freo">
+        <div class="day-eyebrow">
+          <span class="mono">Sun 6 Sep</span>
+          <span class="badge leg-freo">Fremantle / Coogee</span>
+        </div>
+        <h2>Day 8 — Fremantle + departure</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-label">Morning</div>
+        <div class="tl-content">Slow checkout. Fremantle Markets/cafes, Esplanade Park, the Little Creatures area, or a beach walk depending on the weather.</div>
+        <div class="tl-label">Lunch / nap</div>
+        <div class="tl-content">Early lunch; car nap if needed.</div>
+        <div class="tl-label">Afternoon</div>
+        <div class="tl-content">Leave a buffer for the airport by around 2:15–2:30pm for the 5:20pm flight — allow extra time for the Europcar return before heading to check-in.</div>
+        <div class="tl-label">Evening</div>
+        <div class="tl-content">Depart Perth 5:20pm.</div>
+      </div>
+      <div class="day-foot">
+        <span class="chip">Coogee → Fremantle: ~15–25 min</span>
+        <span class="chip">Coogee/Fremantle → Airport: ~35–50 min</span>
+      </div>
+      <div class="kidnote"><strong>Kid note</strong>Keep the final day low-risk — avoid paid attractions that could run late and squeeze the flight.</div>
+    </article>
+
+  </section>
+
+  <p class="planning-note">Drive times are planning ranges, not guarantees — they'll shift with your exact accommodation address, traffic, road works, weather and ferry/tour schedules. Worth rechecking closer to travel.</p>
+</main>
+
+<footer class="sources">
+  <h3>Sources referenced while planning</h3>
+  <ul>
+    <li><a href="https://cavershamwildlife.com.au/plan-your-visit/opening-hours/" target="_blank" rel="noopener">Caversham Wildlife Park — opening hours</a></li>
+    <li><a href="https://www.destinationperth.com.au/blog/post/strawberry-picking-across-perth-your-ultimate-guide/" target="_blank" rel="noopener">Destination Perth — strawberry picking guide</a></li>
+    <li><a href="https://rac.com.au/horizons/explore/fruit-picking-perth" target="_blank" rel="noopener">RAC WA — fruit picking near Perth</a></li>
+    <li><a href="https://www.penguinisland.com.au/visitor-info-penguin-island" target="_blank" rel="noopener">Penguin Island — visitor info</a></li>
+    <li><a href="https://exploreparks.dbca.wa.gov.au/park/shoalwater-islands-marine-park" target="_blank" rel="noopener">Shoalwater Islands Marine Park</a></li>
+    <li><a href="https://www.rottnestisland.com/visit/getting-here/by-ferry" target="_blank" rel="noopener">Rottnest Island — getting there by ferry</a></li>
+    <li><a href="https://rottnestexpress.com.au/ferry-information/" target="_blank" rel="noopener">Rottnest Express — ferry information</a></li>
+    <li><a href="https://busseltonjetty.com.au/admission/" target="_blank" rel="noopener">Busselton Jetty — admission &amp; hours</a></li>
+    <li><a href="https://www.margaretriver.com/things-to-do/attractions/busselton-jetty/" target="_blank" rel="noopener">Margaret River Region — Busselton Jetty</a></li>
+    <li><a href="https://www.bgpa.wa.gov.au/kings-park-attractions" target="_blank" rel="noopener">Kings Park &amp; Botanic Garden — attractions &amp; hours</a></li>
+    <li><a href="https://www.visitfremantle.com.au/fremantle-markets" target="_blank" rel="noopener">Visit Fremantle — Fremantle Markets opening days</a></li>
+  </ul>
+</footer>
+
+<script>
+  const planks = document.querySelectorAll('.plank');
+  const days = document.querySelectorAll('.day');
+
+  planks.forEach(p => {
+    p.addEventListener('click', () => {
+      document.getElementById(p.dataset.target).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  const setActive = (id) => {
+    planks.forEach(p => p.classList.toggle('active', p.dataset.target === id));
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        setActive(entry.target.id);
+      }
+    });
+  }, {rootMargin:'-40% 0px -50% 0px', threshold:0});
+
+  days.forEach(d => observer.observe(d));
+</script>
+
+</body>
+</html>
